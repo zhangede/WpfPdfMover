@@ -1,0 +1,30 @@
+﻿<Window x:Class="WpfPdfMover.MainWindowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525"
+        xmlns:viewModel="clr-namespace:WpfPdfMover.ViewModel">
+
+    <Window.DataContext>
+        <viewModel:MainWindowViewModel/>
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Image Source="Images/Konica.png" Margin="10,0,369.667,128"/>
+
+        <ComboBox Grid.Row="0" ItemsSource="{Binding Path=CustomerEntries}"
+                  DisplayMemberPath="Kundenname"
+                  SelectedValuePath="Kundenname" Margin="10,47,9.667,90" 
+                  />
+
+        <!--<Button Grid.Row="1" Command="{Binding OpenPdfCommand}" CommandParameter="Hai" Content="{Binding HiButtonContent}" Margin="10,55,326.667,56.667"  />-->
+        <!--<Button Grid.Row="1" Content="Toggle Can Click" Command="{Binding ToggleExecuteCommand}" Margin="213,55,128.667,56.667"/>-->
+        <Button Grid.Row="0" x:Name="BtnPdfFileOpen" Content="Open Pdf"  Command="{Binding OpenPdfCommand}" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Width="69" Height="20"/>
+        <TextBox Grid.Row="0" x:Name="TxtPdfPath" HorizontalAlignment="Left" Height="20" Margin="84,75,0,0" TextWrapping="Wrap" Text="{Binding Path=PdfPath, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="425"/>
+    </Grid>
+
+</Window>
